@@ -1,0 +1,5 @@
+let a = prompt('First num')
+if (isNaN(a)) throw new Error('Некорректный ввод!')
+let b = prompt('Second num')
+if (isNaN(b)) throw new Error('Некорректный ввод!')
+console.log(`Ответ: ${+a + +b}, ${a / b}.`)
