@@ -4,11 +4,9 @@ Array.prototype.myFilter = function (callback, obj) {
     if (callback.call(obj, currentArgument, index, array)) {
       filteredArr = [...filteredArr, currentArgument]
     }
-    return filteredArr
   })
   return filteredArr
 }
-
 function createDebounceFunction(callback, wait) {
   let timeout
   return function (...args) {
