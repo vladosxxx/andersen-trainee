@@ -11,9 +11,9 @@ Array.prototype.myFilter = function (callback, obj) {
 
 function createDebounceFunction(callback, wait) {
   let timeout
-  return function () {
+  return function (...args) {
     const later = function () {
-      callback.apply(this, arguments)
+      callback.apply(this, args)
     }
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
