@@ -15,10 +15,9 @@ class Stack {
   }
   push(elem) {
     if (this.maxStackSize < this.stackSize) throw new Error('Error')
-    let newEl = new StackElem(elem, null)
     let curEl = this.stackHead
+    let newEl = new StackElem(elem, curEl)
     this.stackHead = newEl
-    newEl.nextEl = curEl
     this.stackSize++
     return this.stackHead
   }
@@ -40,6 +39,7 @@ class Stack {
   toArray() {
     let newArr = []
     while (this.stackHead) {
+      if (this.stackHead.el == null) break
       newArr = [...newArr, this.stackHead.el]
       this.stackHead = this.stackHead.nextEl
     }
