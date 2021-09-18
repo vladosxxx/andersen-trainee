@@ -8,7 +8,7 @@ class Stack {
   constructor(maxStackSize = 10) {
     if (typeof maxStackSize !== 'number' || !isFinite(maxStackSize))
       throw new Error('Error')
-    this.stackHead = null
+    this.stackHead = new StackElem(null)
     this.stackSize = 0
     this.maxStackSize = maxStackSize
   }
@@ -54,4 +54,5 @@ class Stack {
     return newStack
   }
 }
+
 module.exports = { Stack }
