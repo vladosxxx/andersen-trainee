@@ -55,5 +55,38 @@ class Stack {
     return newStack
   }
 }
+const a = new Stack()
+console.log(a.push(1))
+console.log(a.push(2))
+console.log(a.push(3))
+console.log(a.push(4))
+console.log(a.push(5))
+console.log(a.push(6))
+console.log(a.push(7))
+console.log(a.push(8))
+let b = a.push(9)
 
+console.log('A :', a)
+a[Symbol.iterator] = function () {
+  // ...она возвращает объект итератора:
+  // 2. Далее, for..of работает только с этим итератором, запрашивая у него новые значения
+  return {
+    current: this.nextEl,
+    last: this.StackElem,
+
+    // 3. next() вызывается на каждой итерации цикла for..of
+    next() {
+      // 4. он должен вернуть значение в виде объекта {done:.., value :...}
+      if (this.current <= this.last) {
+        return { done: false, value: this.current++ }
+      } else {
+        return { done: true }
+      }
+    },
+  }
+}
+console.log('Iterator: ', Stack.fromIterable(a))
+for (let num of a) {
+  console.log('FOR:', num) // 1, затем 2, 3, 4, 5
+}
 module.exports = { Stack }
