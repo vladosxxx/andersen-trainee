@@ -109,7 +109,7 @@ class Car {
     if (this.#fuelConsumtion < driveFuel)
       throw new Error('Недостаточно топлива')
 
-    this.#currentFuelVolume += driveFuel
+    this.#currentFuelVolume -= driveFuel
     this.#mileage += way
   }
 }
